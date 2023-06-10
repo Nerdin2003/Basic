@@ -1,0 +1,28 @@
+import requests
+import json
+
+def get_weather(city, date)
+    api_key = 'YOUR_API_KEY'  # Замініть на свій API-ключ
+    base_url = 'httpsapi.openweathermap.orgdata2.5weather'
+
+    # Параметри запиту
+    params = {
+        'q' city,
+        'appid' api_key
+    }
+
+    # Виконуємо запит
+    response = requests.get(base_url, params=params)
+    data = json.loads(response.text)
+
+    # Отримуємо потрібні дані з отриманої відповіді
+    weather = data['weather'][0]['main']
+    temperature = data['main']['temp']
+
+    # Виводимо результат
+    print(f'Погода у місті {city} на дату {date}')
+    print(f'Погодні умови {weather}')
+    print(f'Температура {temperature}°C')
+
+# Приклад виклику функції
+get_weather('Київ', '2023-06-10')
